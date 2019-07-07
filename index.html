@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Letters to color</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="color-pick"><ul>
+            <li class="letter"><span>А</span><input type="color"></li>
+            <li class="letter"><span>Б</span><input type="color"></li>
+            <li class="letter"><span>В</span><input type="color"></li>
+            <li class="letter"><span>Г</span><input type="color"></li>
+            <li class="letter"><span>Д</span><input type="color"></li>
+            <li class="letter"><span>Е</span><input type="color"></li>
+            <li class="letter"><span>Ё</span><input type="color"></li>
+            <li class="letter"><span>Ж</span><input type="color"></li>
+            <li class="letter"><span>З</span><input type="color"></li>
+            <li class="letter"><span>И</span><input type="color"></li>
+            <li class="letter"><span>Й</span><input type="color"></li>
+            <li class="letter"><span>К</span><input type="color"></li>
+            <li class="letter"><span>Л</span><input type="color"></li>
+            <li class="letter"><span>М</span><input type="color"></li>
+            <li class="letter"><span>Н</span><input type="color"></li>
+            <li class="letter"><span>О</span><input type="color"></li>
+            <li class="letter"><span>П</span><input type="color"></li>
+            <li class="letter"><span>Р</span><input type="color"></li>
+            <li class="letter"><span>С</span><input type="color"></li>
+            <li class="letter"><span>Т</span><input type="color"></li>
+            <li class="letter"><span>У</span><input type="color"></li>
+            <li class="letter"><span>Ф</span><input type="color"></li>
+            <li class="letter"><span>Х</span><input type="color"></li>
+            <li class="letter"><span>Ц</span><input type="color"></li>
+            <li class="letter"><span>Ч</span><input type="color"></li>
+            <li class="letter"><span>Ш</span><input type="color"></li>
+            <li class="letter"><span>Щ</span><input type="color"></li>
+            <li class="letter"><span>Ъ</span><input type="color"></li>
+            <li class="letter"><span>Ы</span><input type="color"></li>
+            <li class="letter"><span>Ь</span><input type="color"></li>
+            <li class="letter"><span>Э</span><input type="color"></li>
+            <li class="letter"><span>Ю</span><input type="color"></li>
+            <li class="letter"><span>Я</span><input type="color"></li>
+        </ul></div>
+        <textarea name="string-in" id="string-in" cols="30" rows="10">Текст по умолчанию.</textarea>
+        <div class="result-gradient"></div>
+    </div>
+
+    <script>
+        var textarea = document.querySelector('#string-in'); //input field
+        var inputString = textarea.innerHTML; //string to convert
+        var grad = document.querySelector('.result-gradient'); //gradient DIV
+        var textToColor = { //letter - color associative array
+            
+        };
+        var colorsArr = []; // Text transformed to colors
+
+        function clearObj(arr) { //clear associative array (actually object)
+            for (var prop in arr) {
+                if (arr.hasOwnProperty(prop)) {
+                    delete arr[prop];
+                }
+            }
+        }
+
+        function getColors() { //fill textToColor associative array
+            clearObj(textToColor);
+            document.querySelectorAll('li.letter').forEach(el => {
+                var letter = el.querySelector('span').innerText;
+                var color = el.querySelector('input').value;
+
+                textToColor[letter] = color;
+            });
+            console.log(textToColor);
+        }
+
+        function drawGrad(colorsArrCss) { //set background for gradient DIV
+            grad.setAttribute('style', `background: 90deg, ${colorsArrCss}`)
+        }
+
+        textarea.addEventListener("keyup", e => { //
+            getColors();
+            let text = textarea.value.toUpperCase();
+            colorsArr
+            for(var i = 0; i < text.length; i++ ) {
+               if (textToColor[text[i]]) {
+
+               }
+            }
+        })
+
+    </script>
+</body>
+</html>
