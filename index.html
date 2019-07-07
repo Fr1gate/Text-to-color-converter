@@ -73,22 +73,34 @@
 
                 textToColor[letter] = color;
             });
-            console.log(textToColor);
+            console.log(textToColor); ////////////////////////CONSOLE LOG!!!!!!!!!!!!!!
         }
 
-        function drawGrad(colorsArrCss) { //set background for gradient DIV
-            grad.setAttribute('style', `background: 90deg, ${colorsArrCss}`)
+        function drawGrad(colorsCss) { //set background for gradient DIV
+            grad.setAttribute('style', `background: linear-gradient(90deg, ${colorsCss})`)
         }
 
-        textarea.addEventListener("keyup", e => { //
-            getColors();
-            let text = textarea.value.toUpperCase();
-            colorsArr
-            for(var i = 0; i < text.length; i++ ) {
+        function arrToCss(arr) {
+            // #ffffff, #ffaaaa, #aa4246
+            var cssArr = '';
+            arr.forEach(v => {
+                cssArr += v + ', '
+            })
+            return cssArr.slice(0, cssArr.length - 2);
+        }
+
+        textarea.addEventListener("keyup", e => { 
+            getColors();                             //got array
+            let text = textarea.value.toUpperCase(); //got string
+            colorsArr = [];
+            for(var i = 0; i < text.length; i++ ) {  //fill colorsArr 
                if (textToColor[text[i]]) {
-
+                    colorsArr.push(textToColor[text[i]]);
                }
             }
+            console.log(colorsArr);          ////////////////////////CONSOLE LOG!!!!!!!!!!!!!!
+            console.log(arrToCss(colorsArr));////////////////////////CONSOLE LOG!!!!!!!!!!!!!!
+            drawGrad(arrToCss(colorsArr));
         })
 
     </script>
