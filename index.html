@@ -45,6 +45,7 @@
             <li class="letter"><span>Я</span><input type="color"></li>
         </ul></div>
         <textarea name="string-in" id="string-in" cols="30" rows="10">Текст по умолчанию.</textarea>
+        <button id="button">КОНВЕРТИРОВАТЬ</button>
         <div class="result-gradient"></div>
     </div>
 
@@ -102,6 +103,21 @@
             console.log(arrToCss(colorsArr));////////////////////////CONSOLE LOG!!!!!!!!!!!!!!
             drawGrad(arrToCss(colorsArr));
         })
+
+        document.getElementById("button").addEventListener("click", e => {
+            e.preventDefault();
+            getColors();                             //got array
+            let text = textarea.value.toUpperCase(); //got string
+            colorsArr = [];
+            for(var i = 0; i < text.length; i++ ) {  //fill colorsArr 
+               if (textToColor[text[i]]) {
+                    colorsArr.push(textToColor[text[i]]);
+               }
+            }
+            console.log(colorsArr);          ////////////////////////CONSOLE LOG!!!!!!!!!!!!!!
+            console.log(arrToCss(colorsArr));////////////////////////CONSOLE LOG!!!!!!!!!!!!!!
+            drawGrad(arrToCss(colorsArr));
+        });
 
     </script>
 </body>
