@@ -79,3 +79,7 @@ document.getElementById("button").addEventListener("click", e => {
     e.preventDefault();
     transformText();
 });
+
+window.onload() = () => {
+    transformText();
+}
