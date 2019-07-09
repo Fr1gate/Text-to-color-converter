@@ -16,6 +16,9 @@ var textToColor = { //letter - color associative array. Current color collection
 };
 var colorsArrs = []; // array or string->color arrays 
 
+///////default colors/////////
+defaultColors = {"А":"#ffe6e6","Б":"#40f3fd","В":"#008000","Г":"#536b71","Д":"#ffd2ff","Е":"#c58b8b","Ё":"#a85400","Ж":"#3e42e1","З":"#00a800","И":"#aa5555","Й":"#9f0000","К":"#800040","Л":"#0066cc","М":"#ff0000","Н":"#ffff00","О":"#d5eaff","П":"#414141","Р":"#804000","С":"#dddd00","Т":"#ffd362","У":"#caffca","Ф":"#5f5faf","Х":"#3e9eff","Ц":"#fdb851","Ч":"#8a0000","Ш":"#0080ff","Щ":"#0000b7","Ъ":"#7a7a7a","Ы":"#dbdbdb","Ь":"#944949","Э":"#ffe8f3","Ю":"#8a4a20","Я":"#6c0036"};
+
 function clearObj(arr) { //clear associative array (actually object)
     for (var prop in arr) {
         if (arr.hasOwnProperty(prop)) {
