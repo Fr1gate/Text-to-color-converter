@@ -80,6 +80,6 @@ document.getElementById("button").addEventListener("click", e => {
     transformText();
 });
 
-window.onload() = () => {
+window.onload = function() {
     transformText();
 }
