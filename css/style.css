@@ -1,7 +1,39 @@
+@font-face {
+    font-family: 'SF Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/sfpro-regular/SFProDisplay-Regular.woff2') format('woff2'),
+         url('../fonts/sfpro-regular/SFProDisplay-Regular.woff') format('woff'),
+         url('../fonts/sfpro-regular/SFProDisplay-Regular.ttf') format('ttf'),
+         url('../fonts/sfpro-regular/SFProDisplay-Regular.eot') format('eot');
+}
+
+@font-face {
+    font-family: 'SF Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/sfpro-bold/SFProDisplay-Bold.woff2') format('woff2'),
+         url('../fonts/sfpro-bold/SFProDisplay-Bold.woff') format('woff'),
+         url('../fonts/sfpro-bold/SFProDisplay-Bold.ttf') format('ttf'),
+         url('../fonts/sfpro-bold/SFProDisplay-Bold.eot') format('eot');
+}
+
+:root {
+    --light-coffee: #F7E8D4;
+    --dark-coffee: #B98068;
+}
+  
+
 * {
     margin: 0;
     padding: 0;
     list-style: none;
+    font-family: inherit;
+}
+
+body {
+    background: #fff;
+    font-family: 'SF Pro', Arial, sans-serif;
 }
 
 .wrapper {
@@ -10,9 +42,18 @@
     padding: 0 50px;
 }
 
+h1.logo {
+    text-indent: -9999px;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    background: url(../img/logo.png) no-repeat;
+}
+
 li {
     display: inline-block;
     margin-right: 10px;
+    font-weight: bold;
 }
 
 li>span {
@@ -20,9 +61,46 @@ li>span {
     display: inline-block;
 }
 
+input[type="color"] {
+    border: none;
+    display: inline;
+    position: relative;
+    top: 5px;
+}
+
 textarea {
-    background: rgba(255,0,0,0.1);
+    margin: 10px auto;
+    font-size: 1.25em;
+    background: var(--light-coffee);
+    padding: 10px;
     width: 100%;
+    border: 1px solid var(--dark-coffee);
+    border-radius: 10px;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+}
+
+button {
+    display: block;
+    margin: 25px auto;
+    font-weight: bold;
+    background: #fff;
+    color: var(--dark-coffee);
+    border-radius: 25px;
+    border: 1px solid var(--dark-coffee);
+    width: 300px;
+    height: 50px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--dark-coffee);
+    color: #fff;
 }
 
 .result-gradient {
