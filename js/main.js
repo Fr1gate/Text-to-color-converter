@@ -10,7 +10,6 @@
 var textarea = document.querySelector('#string-in'); //input field
 var inputString = textarea.innerHTML; //string to convert
 var gradContainer = document.querySelector('.gradient-container'); //container width gradients
-var grad = document.querySelector('.result-gradient'); //gradient DIV |||| DO I NEED IT?
 var textToColor = { //letter - color associative array. Current color collection
     
 };
@@ -37,7 +36,10 @@ function getColors() { //fill textToColor associative array
     });
 }
 
-function setColors() { //display new colors from textToColor
+function setColors(colors) { 
+    textToColor = colors;
+    
+    //display new colors from textToColor
     document.querySelectorAll('li.letter').forEach(el => {
         var letter = el.querySelector('span').innerText;
         el.querySelector('input').value = textToColor[letter];
@@ -62,7 +64,7 @@ function transformText() {
         if (textToColor[text[i]]) {
             colorsArr.push(textToColor[text[i]]);
         } else if (text[i] === '\n') {
-            colorsArrs.push(colorsArr.slice()); // add array to array of arrays ||| slice to pass by value and break reference
+            colorsArrs.push(colorsArr.slice()); // add array to array of arrays | slice to pass by value and break reference
             colorsArr.length = 0; // clear array
         }
     }
@@ -83,6 +85,43 @@ document.getElementById("button").addEventListener("click", e => {
     transformText();
 });
 
+/*
+*
+* detect IE
+* returns version of IE or false, if browser is not Internet Explorer
+*/
+function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+    // Edge (IE 12+) => return version number
+    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
+}
+
 window.onload = function() {
+    if (detectIE()) {
+        alert('Your browser is not supported. Try firefox, opera or chrome'); //not working. Nothing is working on IE11 even this
+    }
+
+    setColors(defaultColors);
+
     transformText();
 }

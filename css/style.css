@@ -69,6 +69,7 @@ li>span {
 
 input[type="color"] {
     border: none;
+    background: none;
     display: inline;
     position: relative;
     top: 5px;
